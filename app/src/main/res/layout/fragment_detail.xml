@@ -1,0 +1,179 @@
+<?xml version="1.0" encoding="utf-8"?><!-- Data binding layout-->
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+    <!-- Asteroid data -->
+    <data>
+
+        <variable
+            name="viewModel"
+            type="com.example.asteroidradar.detail.DetailViewModel" />
+    </data>
+    <!-- ScrollView for different screens size -->
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+        <!-- ConstraintLayout consists of status image  and asteroid details -->
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            tools:context=".detail.DetailFragment">
+
+            <ImageView
+                android:id="@+id/statusOfAsteroid"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:contentDescription="@string/status_image_asteroid"
+                android:scaleType="fitXY"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:statusImageDetail="@{viewModel.selectedAsteroid}" />
+
+            <TextView
+                android:id="@+id/closeApproachDate"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/spacing_normal"
+                android:layout_marginTop="@dimen/spacing_normal"
+                android:contentDescription="@string/close_approach_date"
+                android:text="@string/close_approach_date"
+                android:textSize="20sp"
+                android:textStyle="bold"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.0"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/statusOfAsteroid" />
+
+            <TextView
+                android:id="@+id/date_detail"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:contentDescription="@string/asteroid_date"
+                android:text="@{viewModel.selectedAsteroid.closeApproachDate}"
+                android:textStyle="bold"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.0"
+                app:layout_constraintStart_toStartOf="@+id/closeApproachDate"
+                app:layout_constraintTop_toBottomOf="@+id/closeApproachDate" />
+
+            <TextView
+                android:id="@+id/absoluteMagnitude"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/spacing_normal"
+                android:contentDescription="@string/absolute_magnitude"
+                android:text="@string/absolute_magnitude"
+                android:textSize="20sp"
+                android:textStyle="bold"
+                app:layout_constraintStart_toStartOf="@+id/date_detail"
+                app:layout_constraintTop_toBottomOf="@+id/date_detail" />
+
+            <TextView
+                android:id="@+id/absoluteMagnitudeValue"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:contentDescription="@string/absolute_magnitude_value"
+                android:text="@{viewModel.format1(viewModel.selectedAsteroid.absoluteMagnitude)}"
+                android:textStyle="bold"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.0"
+                app:layout_constraintStart_toStartOf="@+id/absoluteMagnitude"
+                app:layout_constraintTop_toBottomOf="@+id/absoluteMagnitude" />
+
+            <ImageView
+                android:id="@+id/help"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="@dimen/spacing_normal"
+                android:contentDescription="@string/help_image"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="1.0"
+                app:layout_constraintStart_toEndOf="@+id/absoluteMagnitude"
+                app:layout_constraintTop_toTopOf="@+id/absoluteMagnitude"
+                app:srcCompat="@drawable/ic_help_circle" />
+
+            <TextView
+                android:id="@+id/estimatedDiameter"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/spacing_normal"
+                android:contentDescription="@string/estimated_diameter"
+                android:text="@string/estimated_diameter"
+                android:textSize="20sp"
+                android:textStyle="bold"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.0"
+                app:layout_constraintStart_toStartOf="@+id/absoluteMagnitudeValue"
+                app:layout_constraintTop_toBottomOf="@+id/absoluteMagnitudeValue" />
+
+            <TextView
+                android:id="@+id/estimatedDiameterValue"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:contentDescription="@string/estimated_diameter_value"
+                android:text="@{viewModel.format2(viewModel.selectedAsteroid.estimatedDiameter)}"
+                android:textStyle="bold"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.0"
+                app:layout_constraintStart_toStartOf="@+id/estimatedDiameter"
+                app:layout_constraintTop_toBottomOf="@+id/estimatedDiameter" />
+
+            <TextView
+                android:id="@+id/relativeVelocity"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/spacing_normal"
+                android:contentDescription="@string/relative_velocity"
+                android:text="@string/relative_velocity"
+                android:textSize="20sp"
+                android:textStyle="bold"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.0"
+                app:layout_constraintStart_toStartOf="@+id/estimatedDiameterValue"
+                app:layout_constraintTop_toBottomOf="@+id/estimatedDiameterValue" />
+
+            <TextView
+                android:id="@+id/relativeVelocityValue"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:contentDescription="@string/relative_velocity_value"
+                android:text="@{viewModel.format3(viewModel.selectedAsteroid.relativeVelocity)}"
+                android:textStyle="bold"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.0"
+                app:layout_constraintStart_toStartOf="@+id/relativeVelocity"
+                app:layout_constraintTop_toBottomOf="@+id/relativeVelocity" />
+
+            <TextView
+                android:id="@+id/distanceFromEarth"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/spacing_normal"
+                android:contentDescription="@string/distance_from_earth"
+                android:text="@string/distance_from_earth"
+                android:textSize="20sp"
+                android:textStyle="bold"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.0"
+                app:layout_constraintStart_toStartOf="@+id/relativeVelocityValue"
+                app:layout_constraintTop_toBottomOf="@+id/relativeVelocityValue" />
+
+            <TextView
+                android:id="@+id/distanceFromEarthValue"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:contentDescription="@string/distance_from_earth_value"
+                android:text="@{viewModel.format1(viewModel.selectedAsteroid.distanceFromEarth)}"
+                android:textStyle="bold"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.0"
+                app:layout_constraintStart_toStartOf="@+id/distanceFromEarth"
+                app:layout_constraintTop_toBottomOf="@+id/distanceFromEarth"
+                app:layout_constraintVertical_bias="0.0" />
+
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </ScrollView>
+</layout>

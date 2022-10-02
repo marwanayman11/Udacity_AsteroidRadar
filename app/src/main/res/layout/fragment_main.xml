@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="utf-8"?><!-- Data binding layout -->
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+    <!-- Asteroid data and picture data -->
+    <data>
+
+        <variable
+            name="viewModel"
+            type="com.example.asteroidradar.main.MainViewModel" />
+    </data>
+
+    <androidx.core.widget.NestedScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:descendantFocusability="blocksDescendants">
+        <!-- Linearlayout consists of image of the day and recyclerView for asteroids -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+
+            <ImageView
+                android:id="@+id/pictureOfTheDay"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:contentDescription="@{viewModel.picture.title}"
+                android:scaleType="fitXY"
+                app:layout_constraintHorizontal_bias="0.0"
+                app:pictureOfTheDay="@{viewModel.picture.url}"
+                tools:src="@tools:sample/backgrounds/scenic" />
+
+            <TextView
+                android:id="@+id/im_text"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:contentDescription="@string/image_of_the_day"
+                android:fontFamily="@font/akaya_telivigala"
+                android:paddingHorizontal="@dimen/spacing_normal"
+                android:text="@string/image_of_the_day"
+                android:textColor="@color/white"
+                android:textSize="30sp"
+                tools:ignore="TextContrastCheck" />
+
+            <com.google.android.material.divider.MaterialDivider
+                android:layout_width="wrap_content"
+                android:layout_height="1dp"
+                app:dividerColor="@color/potentially_hazardous" />
+
+            <TextView
+                android:id="@+id/as_text"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:contentDescription="@string/asteroids"
+                android:fontFamily="@font/akaya_telivigala"
+                android:paddingHorizontal="@dimen/spacing_normal"
+                android:paddingTop="@dimen/spacing_small"
+                android:text="@string/asteroids"
+                android:textColor="@color/potentially_hazardous"
+                android:textSize="30sp"
+                tools:ignore="TextContrastCheck" />
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/asteroids"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:contentDescription="@string/asteroids_list"
+                android:nestedScrollingEnabled="false"
+                app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+                app:listData="@{viewModel.asteroids}"
+                tools:listitem="@layout/asteroid_item" />
+        </LinearLayout>
+    </androidx.core.widget.NestedScrollView>
+</layout>

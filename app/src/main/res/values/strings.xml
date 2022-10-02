@@ -1,0 +1,28 @@
+<resources>
+    <string name="app_name">Asteroid Radar</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="picture_of_the_day">Picture of the day</string>
+    <string name="asteroids_list">Asteroids list</string>
+    <string name="asteroid_codename">Asteroid codename</string>
+    <string name="asteroid_date">Asteroid date</string>
+    <string name="status_image">Status image</string>
+    <string name="image_of_the_day">Image of the Day</string>
+    <string name="asteroids">Asteroids</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="close_approach_date">Close approach date</string>
+    <string name="status_image_asteroid">Status image of asteroid</string>
+    <string name="absolute_magnitude">Absolute magnitude</string>
+    <string name="absolute_magnitude_value">Absolute magnitude value</string>
+    <string name="help_image">Help icon</string>
+    <string name="estimated_diameter">Estimated diameter</string>
+    <string name="estimated_diameter_value">Estimated diameter value</string>
+    <string name="relative_velocity">Relative velocity</string>
+    <string name="relative_velocity_value">Relative velocity value</string>
+    <string name="distance_from_earth">Distance from earth</string>
+    <string name="distance_from_earth_value">Distance from earth value</string>
+    <string name="dialog">The astronomical unit (au) is a unit of length, roughly the distance from Earth to the Sun and equal to about 150 million kilometres (93 million miles)</string>
+    <string name="view_week_asteroids">View week asteroids</string>
+    <string name="view_today_asteroids">View today asteroids</string>
+    <string name="view_saved_asteroids">View saved asteroids</string>
+</resources>

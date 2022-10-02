@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item
+        android:id="@+id/view_week"
+        android:title="@string/view_week_asteroids"
+        app:showAsAction="never" />
+    <item
+        android:id="@+id/view_today"
+        android:title="@string/view_today_asteroids"
+        app:showAsAction="never"
+        />
+    <item
+        android:id="@+id/view_saved"
+        android:title="@string/view_saved_asteroids"
+        app:showAsAction="never"
+        />
+</menu>
