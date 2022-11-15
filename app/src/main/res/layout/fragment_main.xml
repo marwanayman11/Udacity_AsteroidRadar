@@ -4,7 +4,6 @@
     xmlns:tools="http://schemas.android.com/tools">
     <!-- Asteroid data and picture data -->
     <data>
-
         <variable
             name="viewModel"
             type="com.example.asteroidradar.main.MainViewModel" />
@@ -24,10 +23,10 @@
                 android:id="@+id/pictureOfTheDay"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:contentDescription="@{viewModel.picture.title}"
                 android:scaleType="fitXY"
+                android:contentDescription="@{viewModel.picture.title}"
                 app:layout_constraintHorizontal_bias="0.0"
-                app:pictureOfTheDay="@{viewModel.picture.url}"
+                app:pictureOfTheDay="@{viewModel.picture}"
                 tools:src="@tools:sample/backgrounds/scenic" />
 
             <TextView
@@ -35,11 +34,11 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:contentDescription="@string/image_of_the_day"
-                android:fontFamily="@font/akaya_telivigala"
                 android:paddingHorizontal="@dimen/spacing_normal"
-                android:text="@string/image_of_the_day"
+                android:paddingTop="@dimen/spacing_small"
+                android:text="@{viewModel.picture.title}"
                 android:textColor="@color/white"
-                android:textSize="30sp"
+                android:textSize="25sp"
                 tools:ignore="TextContrastCheck" />
 
             <com.google.android.material.divider.MaterialDivider
@@ -52,14 +51,12 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:contentDescription="@string/asteroids"
-                android:fontFamily="@font/akaya_telivigala"
                 android:paddingHorizontal="@dimen/spacing_normal"
                 android:paddingTop="@dimen/spacing_small"
                 android:text="@string/asteroids"
                 android:textColor="@color/potentially_hazardous"
                 android:textSize="30sp"
                 tools:ignore="TextContrastCheck" />
-
             <androidx.recyclerview.widget.RecyclerView
                 android:id="@+id/asteroids"
                 android:layout_width="match_parent"
@@ -70,5 +67,6 @@
                 app:listData="@{viewModel.asteroids}"
                 tools:listitem="@layout/asteroid_item" />
         </LinearLayout>
+
     </androidx.core.widget.NestedScrollView>
 </layout>

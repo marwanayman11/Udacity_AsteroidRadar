@@ -5,16 +5,19 @@ import androidx.recyclerview.widget.RecyclerView
 import com.squareup.picasso.Picasso
 
 @BindingAdapter("pictureOfTheDay")
-fun bindImage(imageView: ImageView, url: String?) {
-    url?.let {
-        Picasso.get()
-            .load(url)
-            .placeholder(R.drawable.placeholder_picture_of_day)
-            .error(R.drawable.ic_help_circle)
-            .into(imageView)
-    }
-
-   // image of the day mediaType is video today so it will be ic_help_circle until tomorrow
+fun bindImage(imageView: ImageView, pictureOfDay: PictureOfDay?) {
+        pictureOfDay?.mediaType.let {
+            when (it){
+               "image"-> pictureOfDay?.url.let { url->
+                    Picasso.get()
+                        .load(url)
+                        .placeholder(R.drawable.placeholder_picture_of_day)
+                        .error(R.drawable.ic_help_circle)
+                        .into(imageView)
+                }
+                "video"-> imageView.setImageResource(R.drawable.watch)
+            }
+        }
 }
 
 @BindingAdapter("listData")

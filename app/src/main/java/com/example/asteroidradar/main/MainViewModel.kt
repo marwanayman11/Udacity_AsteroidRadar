@@ -15,6 +15,7 @@ enum class Filter {
     All
 }
 class MainViewModel(application: Application) : AndroidViewModel(application) {
+    val video = "video"
     private val database = getDatabase(application)
     private val repository = AsteroidsRepository(database)
     private val pictureDatabase = getPictureDatabase(application)
