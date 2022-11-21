@@ -9,11 +9,9 @@
     <item
         android:id="@+id/view_today"
         android:title="@string/view_today_asteroids"
-        app:showAsAction="never"
-        />
+        app:showAsAction="never" />
     <item
         android:id="@+id/view_saved"
         android:title="@string/view_saved_asteroids"
-        app:showAsAction="never"
-        />
+        app:showAsAction="never" />
 </menu>

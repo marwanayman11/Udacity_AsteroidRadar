@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <navigation xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/navigation"
     app:startDestination="@id/mainFragment">
 
@@ -13,6 +14,9 @@
             app:destination="@id/detailFragment"
             app:enterAnim="@anim/fade_in"
             app:exitAnim="@anim/fade_out" />
+        <action
+            android:id="@+id/action_mainFragment_to_webView"
+            app:destination="@id/webView" />
     </fragment>
     <fragment
         android:id="@+id/detailFragment"
@@ -21,5 +25,14 @@
         <argument
             android:name="asteroid"
             app:argType="com.example.asteroidradar.Asteroids" />
+    </fragment>
+    <fragment
+        android:id="@+id/webView"
+        android:name="com.example.asteroidradar.WebView"
+        android:label="fragment_web_view"
+        tools:layout="@layout/fragment_web_view">
+        <argument
+            android:name="url"
+            app:argType="string" />
     </fragment>
 </navigation>

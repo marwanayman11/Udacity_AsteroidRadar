@@ -25,6 +25,7 @@ class AsteroidsRepository(private val database: AsteroidsRoom) {
         Transformations.map(database.asteroidsDao.getAsteroidsWeek()) {
             it.asDomainModel()
         }
+
     suspend fun refreshAsteroids() {
         withContext(Dispatchers.IO) {
 

@@ -1,4 +1,5 @@
 package com.example.asteroidradar.main
+
 import android.os.Bundle
 import android.view.*
 import androidx.fragment.app.Fragment
@@ -19,7 +20,7 @@ class MainFragment : Fragment() {
     ): View {
         val application = requireNotNull(this.activity).application
         val viewModelFactory = MainViewModelFactory(application)
-        val viewModel = ViewModelProvider(this,viewModelFactory)[MainViewModel::class.java]
+        val viewModel = ViewModelProvider(this, viewModelFactory)[MainViewModel::class.java]
         val binding = FragmentMainBinding.inflate(inflater)
 
         binding.lifecycleOwner = this
@@ -28,13 +29,24 @@ class MainFragment : Fragment() {
         val adapter = AsteroidAdapter(AsteroidAdapter.OnClickListener {
             viewModel.displayAsteroidDetails(it)
         })
-        binding.asteroids.adapter=adapter
+        binding.asteroids.adapter = adapter
 
         viewModel.navigateToSelectedAsteroid.observe(viewLifecycleOwner) {
             if (null != it) {
                 this.findNavController()
                     .navigate(MainFragmentDirections.actionMainFragmentToDetailFragment(it))
                 viewModel.displayAsteroidDetailsComplete()
+            }
+
+        }
+
+        binding.pictureOfTheDay.setOnClickListener {
+            viewModel.picture.observe(viewLifecycleOwner) {
+                if (null != it) {
+                    this.findNavController()
+                        .navigate(MainFragmentDirections.actionMainFragmentToWebView(it.url))
+                }
+
             }
 
         }

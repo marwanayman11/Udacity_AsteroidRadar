@@ -20,7 +20,7 @@
             android:layout_height="wrap_content"
             android:contentDescription="@string/asteroid_codename"
             android:text="@{asteroid.codename}"
-            android:textSize="20sp"
+            android:textSize="15sp"
             android:textStyle="bold"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />

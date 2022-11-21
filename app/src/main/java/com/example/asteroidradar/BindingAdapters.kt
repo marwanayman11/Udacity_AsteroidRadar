@@ -1,4 +1,5 @@
 package com.example.asteroidradar
+
 import android.widget.ImageView
 import androidx.databinding.BindingAdapter
 import androidx.recyclerview.widget.RecyclerView
@@ -6,18 +7,18 @@ import com.squareup.picasso.Picasso
 
 @BindingAdapter("pictureOfTheDay")
 fun bindImage(imageView: ImageView, pictureOfDay: PictureOfDay?) {
-        pictureOfDay?.mediaType.let {
-            when (it){
-               "image"-> pictureOfDay?.url.let { url->
-                    Picasso.get()
-                        .load(url)
-                        .placeholder(R.drawable.placeholder_picture_of_day)
-                        .error(R.drawable.ic_help_circle)
-                        .into(imageView)
-                }
-                "video"-> imageView.setImageResource(R.drawable.watch)
+    pictureOfDay?.mediaType.let {
+        when (it) {
+            "image" -> pictureOfDay?.url.let { url ->
+                Picasso.get()
+                    .load(url)
+                    .placeholder(R.drawable.placeholder_picture_of_day)
+                    .error(R.drawable.ic_help_circle)
+                    .into(imageView)
             }
+            "video" -> imageView.setImageResource(R.drawable.watch)
         }
+    }
 }
 
 @BindingAdapter("listData")

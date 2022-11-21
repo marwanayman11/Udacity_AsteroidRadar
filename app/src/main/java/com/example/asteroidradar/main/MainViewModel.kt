@@ -1,4 +1,5 @@
 package com.example.asteroidradar.main
+
 import android.annotation.SuppressLint
 import android.app.Application
 import androidx.lifecycle.*
@@ -9,11 +10,13 @@ import com.example.asteroidradar.repository.AsteroidsRepository
 import com.example.asteroidradar.repository.PictureRepository
 import kotlinx.coroutines.launch
 import timber.log.Timber
+
 enum class Filter {
     TODAY,
     WEEK,
     All
 }
+
 class MainViewModel(application: Application) : AndroidViewModel(application) {
     val video = "video"
     private val database = getDatabase(application)
@@ -23,17 +26,18 @@ class MainViewModel(application: Application) : AndroidViewModel(application) {
     private val _navigateToSelectedAsteroid = MutableLiveData<Asteroids>()
     val navigateToSelectedAsteroid: LiveData<Asteroids>
         get() = _navigateToSelectedAsteroid
-    private var filter =MutableLiveData(Filter.All)
-    val asteroids = Transformations.switchMap(filter){
-        when(it!!){
-            Filter.WEEK-> repository.asteroidsW
-            Filter.TODAY->repository.asteroidsT
-            else->repository.asteroids
+    private var filter = MutableLiveData(Filter.All)
+    val asteroids = Transformations.switchMap(filter) {
+        when (it!!) {
+            Filter.WEEK -> repository.asteroidsW
+            Filter.TODAY -> repository.asteroidsT
+            else -> repository.asteroids
         }
     }
+
     init {
         getPicture()
-       getAsteroids()
+        getAsteroids()
     }
 
     val picture = pictureRepository.picture
@@ -56,9 +60,11 @@ class MainViewModel(application: Application) : AndroidViewModel(application) {
             }
         }
     }
-    fun updateFilter(f: Filter){
+
+    fun updateFilter(f: Filter) {
         filter.postValue(f)
     }
+
     fun displayAsteroidDetails(asteroid: Asteroids) {
         _navigateToSelectedAsteroid.value = asteroid
     }
